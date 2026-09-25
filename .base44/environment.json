@@ -2,5 +2,11 @@
   "previewPort": 3000,
   "healthPath": "/",
   "startCommand": "docker compose -f docker-compose.base44.yml up -d",
-  "secrets": []
+  "secrets": [
+    {
+      "name": "SESSION_SECRET",
+      "description": "Secret used to sign session cookies. Any random string works (e.g. from https://generate-secret.net). A dev default is used if not set.",
+      "requiredAtBoot": false
+    }
+  ]
 }

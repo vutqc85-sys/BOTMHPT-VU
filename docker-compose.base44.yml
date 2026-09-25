@@ -1,9 +1,31 @@
 services:
-  web:
-    image: nginx:alpine
-    ports:
-      - "3000:80"
+  setup:
+    image: node:20-slim
+    working_dir: /app/server
     volumes:
-      - ./:/usr/share/nginx/html:ro
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./:/app
+      - node_modules:/app/server/node_modules
+    command: sh -c "if [ ! -d node_modules/express ] || [ package.json -nt node_modules ]; then npm install --no-audit --no-fund; fi"
+
+  app:
+    image: node:20-slim
+    working_dir: /app/server
+    volumes:
+      - ./:/app
+      - node_modules:/app/server/node_modules
+      - app_data:/data
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATA_DIR=/data
+      - SESSION_SECRET=${SESSION_SECRET:-xztw-dev-secret-change-me}
+    command: sh -c "npx nodemon --legacy-watch server.js"
+    depends_on:
+      setup:
+        condition: service_completed_successfully
     restart: unless-stopped
+
+volumes:
+  node_modules:
+  app_data:
