@@ -44,22 +44,28 @@ function renderSettings(settings) {
   const container = document.getElementById('settingsContainer');
   container.innerHTML = '';
 
-  for (const group of SETTING_GROUPS) {
-    const card = document.createElement('div');
-    card.className = 'card bg-dark border-secondary mb-3';
+  const row = document.createElement('div');
+  row.className = 'row g-3';
 
+  for (const group of SETTING_GROUPS) {
     let fieldsHtml = '';
     for (const field of group.fields) {
       fieldsHtml += renderField(field, settings[field.key]);
     }
 
-    card.innerHTML = `
-      <div class="card-header fw-semibold">${group.name}</div>
-      <div class="card-body">
-        <div class="row">${fieldsHtml}</div>
+    const col = document.createElement('div');
+    col.className = 'col-lg-6';
+    col.innerHTML = `
+      <div class="card bg-dark border-secondary h-100">
+        <div class="card-header fw-semibold">${group.name}</div>
+        <div class="card-body">
+          <div class="row">${fieldsHtml}</div>
+        </div>
       </div>`;
-    container.appendChild(card);
+    row.appendChild(col);
   }
+
+  container.appendChild(row);
 }
 
 function renderField(field, value) {
@@ -67,7 +73,7 @@ function renderField(field, value) {
 
   if (type === 'checkbox') {
     return `
-      <div class="col-md-4 col-lg-3 mb-2">
+      <div class="col-sm-6 mb-2">
         <div class="form-check">
           <input class="form-check-input setting-field" type="checkbox" data-key="${key}" data-type="checkbox"
                  id="f_${key}" ${value === true ? 'checked' : ''}>
@@ -78,23 +84,25 @@ function renderField(field, value) {
 
   let input;
   if (type === 'select') {
+    // default: 100000
+    const selected = value != null && String(value) !== '' ? String(value) : '100000';
     const opts = field.options.map(o =>
-      `<option value="${o}" ${String(value) === o ? 'selected' : ''}>${o}</option>`
+      `<option value="${o}" ${selected === o ? 'selected' : ''}>${o}</option>`
     ).join('');
     input = `
       <select class="form-select setting-field" data-key="${key}" data-type="select" id="f_${key}">
-        <option value="">--</option>
         ${opts}
       </select>`;
   } else if (type === 'num') {
     input = `<input type="number" class="form-control setting-field" data-key="${key}" data-type="num" id="f_${key}" value="${value != null ? esc(value) : ''}">`;
   } else {
-    input = `<input type="text" class="form-control setting-field" data-key="${key}" data-type="text" id="f_${key}" value="${esc(value)}">`;
+    const ph = field.placeholder ? ` placeholder="${esc(field.placeholder)}"` : '';
+    input = `<input type="text" class="form-control setting-field" data-key="${key}" data-type="text" id="f_${key}" value="${esc(value)}"${ph}>`;
   }
 
   return `
-    <div class="col-md-4 col-lg-3 mb-3">
-      <label class="form-label" for="f_${key}">${label}</label>
+    <div class="col-12 mb-2">
+      <label class="form-label mb-1" for="f_${key}">${label}</label>
       ${input}
     </div>`;
 }

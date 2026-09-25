@@ -2,106 +2,121 @@
 // Types: checkbox | num | text | select
 const SETTING_GROUPS = [
   {
-    name: 'Daily',
+    name: 'Daily Tasks',
     fields: [
-      { key: 'doAllAdsCheckbox', type: 'checkbox', label: 'Do All Ads' },
+      { key: 'doAllAdsCheckbox', type: 'checkbox', label: 'Run ads' },
       { key: 'doManLocCotCheckbox', type: 'checkbox', label: 'Manual Local CoT' },
       { key: 'doManHeavenlyCotCheckbox', type: 'checkbox', label: 'Manual Heavenly CoT' },
       { key: 'doManCSCotCheckbox', type: 'checkbox', label: 'Manual CS CoT' },
       { key: 'doManStormCotCheckbox', type: 'checkbox', label: 'Manual Storm CoT' },
       { key: 'doManACSCotCheckbox', type: 'checkbox', label: 'Manual ACS CoT' },
-      { key: 'doTreeCheckbox', type: 'checkbox', label: 'Do Tree' },
-      { key: 'doTreeIds', type: 'text', label: 'Tree IDs (comma-separated)' },
-      { key: 'doPchatCheckbox', type: 'checkbox', label: 'Do Pantheon Chat' },
-      { key: 'pantheonWord', type: 'text', label: 'Pantheon Word' },
+      { key: 'doTreeCheckbox', type: 'checkbox', label: 'Take care of friend trees' },
+      { key: 'doPchatCheckbox', type: 'checkbox', label: 'Pantheon chat' },
       { key: 'doChaosCheckbox', type: 'checkbox', label: 'Do Chaos' },
-      { key: 'doWorshipCheckbox', type: 'checkbox', label: 'Do Worship' },
-      { key: 'doWorshipId', type: 'num', label: 'Worship ID' },
-      { key: 'doBeastCheckbox', type: 'checkbox', label: 'Do Beast' },
-      { key: 'beastLevel', type: 'num', label: 'Beast Level' },
-      { key: 'doHellCheckbox', type: 'checkbox', label: 'Do Hell' },
-      { key: 'hellNumber', type: 'num', label: 'Hell Number' },
-      { key: 'doSPCheckbox', type: 'checkbox', label: 'Do Spirit Pact' },
-      { key: 'spNumber', type: 'num', label: 'SP Number' },
-      { key: 'doSTCheckbox', type: 'checkbox', label: 'Do Spirit Troop' },
-      { key: 'stNumber', type: 'num', label: 'ST Number' },
-      { key: 'doVVCheckbox', type: 'checkbox', label: 'Do VV' },
-      { key: 'vvNumber', type: 'num', label: 'VV Number' },
-      { key: 'doInteractEventCheckbox', type: 'checkbox', label: 'Do Interact Event' },
-      { key: 'doInteractEventNumber', type: 'num', label: 'Interact Event Number' },
-      { key: 'doXtdCheckbox', type: 'checkbox', label: 'Do XTD' },
-      { key: 'doAdventureCheckbox', type: 'checkbox', label: 'Do Adventure' },
-      { key: 'doBuildWoodCheckbox', type: 'checkbox', label: 'Do Build Wood' },
-      { key: 'readAndDelMailsCheckBox', type: 'checkbox', label: 'Read & Delete Mails' },
-      { key: 'doFLCheckbox', type: 'checkbox', label: 'Do FL' },
-      { key: 'doRobFLCheckbox', type: 'checkbox', label: 'Do Rob FL' },
-      { key: 'doCompeteCheckbox', type: 'checkbox', label: 'Do Compete' },
-      { key: 'doBreatheCheckbox', type: 'checkbox', label: 'Do Breathe' },
-      { key: 'doVisitCheckbox', type: 'checkbox', label: 'Do Visit' },
-      { key: 'doInteractCheckbox', type: 'checkbox', label: 'Do Interact' },
-      { key: 'doAccompanyCheckbox', type: 'checkbox', label: 'Do Accompany' },
-      { key: 'doBrewCheckbox', type: 'checkbox', label: 'Do Brew' },
-      { key: 'doBUmapCheckbox', type: 'checkbox', label: 'Do BU Map' },
+      { key: 'doInteractEventCheckbox', type: 'checkbox', label: 'Interact for event rebate' },
+      { key: 'doWorshipCheckbox', type: 'checkbox', label: 'Worship' },
+      { key: 'doBeastCheckbox', type: 'checkbox', label: 'Beast seal' },
+      { key: 'doHellCheckbox', type: 'checkbox', label: 'Hell' },
+      { key: 'doSPCheckbox', type: 'checkbox', label: 'Spirit pact' },
+      { key: 'doSTCheckbox', type: 'checkbox', label: 'Spirit troop' },
+      { key: 'doVVCheckbox', type: 'checkbox', label: 'VV' },
+      { key: 'doXtdCheckbox', type: 'checkbox', label: 'Do Vanguard Generals task (14h-16h)' },
+      { key: 'doAdventureCheckbox', type: 'checkbox', label: 'Run adventure level 20 (60 times)' },
+      { key: 'doBuildWoodCheckbox', type: 'checkbox', label: 'BuildWood' },
+      { key: 'readAndDelMailsCheckBox', type: 'checkbox', label: 'Read/Del mails' },
+      { key: 'doFLCheckbox', type: 'checkbox', label: 'FL (no boost)' },
+      { key: 'doRobFLCheckbox', type: 'checkbox', label: 'Rob FL (only rob IA)' },
+      { key: 'doCompeteCheckbox', type: 'checkbox', label: 'Compete' },
+      { key: 'doBreatheCheckbox', type: 'checkbox', label: 'Breathe' },
+      { key: 'doVisitCheckbox', type: 'checkbox', label: 'Visit' },
+      { key: 'doInteractCheckbox', type: 'checkbox', label: 'Interact' },
+      { key: 'doAccompanyCheckbox', type: 'checkbox', label: 'Free accompany' },
+      { key: 'doBrewCheckbox', type: 'checkbox', label: 'buy/brew once for sermon' },
+      { key: 'doBUmapCheckbox', type: 'checkbox', label: 'buy/use map once for sermon' },
       { key: 'doRuinCheckbox', type: 'checkbox', label: 'Do Ruin' },
-      { key: 'doMaxDemonSealCheckbox', type: 'checkbox', label: 'Do Max Demon Seal' },
-      { key: 'usePCandITCheckbox', type: 'checkbox', label: 'Use PC & IT' },
-      { key: 'doPantheonRewardCheckbox', type: 'checkbox', label: 'Do Pantheon Reward' }
+      { key: 'doMaxDemonSealCheckbox', type: 'checkbox', label: 'Do Demon Tower' },
+      { key: 'usePCandITCheckbox', type: 'checkbox', label: 'Use Primordial chest and Inspector token' },
+      { key: 'doPantheonRewardCheckbox', type: 'checkbox', label: 'Get Pantheon activity rewards' },
+      { key: 'doTreeIds', type: 'text', label: 'Friend(s) id(s)', placeholder: 'id1,id2' },
+      { key: 'pantheonWord', type: 'text', label: 'What you want to write in chat' },
+      { key: 'doInteractEventNumber', type: 'num', label: 'Number of pills to use' },
+      { key: 'doWorshipId', type: 'num', label: 'Worship id' },
+      { key: 'beastLevel', type: 'num', label: 'Beast seal level' },
+      { key: 'hellNumber', type: 'num', label: 'Hell number of attempts' },
+      { key: 'spNumber', type: 'num', label: 'Spirit pact Number' },
+      { key: 'stNumber', type: 'num', label: 'Spirit troop Number' },
+      { key: 'vvNumber', type: 'num', label: 'VV stage (example 124)' }
     ]
   },
   {
-    name: 'Market',
+    name: 'Market Beast Resources',
     fields: [
       { key: 'beastForageCheckbox', type: 'checkbox', label: 'Beast Forage' },
-      { key: 'beastForageQuantity', type: 'num', label: 'Beast Forage Quantity' },
-      { key: 'heavenIntPillCheckbox', type: 'checkbox', label: 'Heaven Int Pill' },
-      { key: 'heavenIntPillQuantity', type: 'num', label: 'Heaven Int Pill Quantity' },
+      { key: 'beastForageQuantity', type: 'num', label: 'Quantity (price 500/u)' },
+      { key: 'heavenIntPillCheckbox', type: 'checkbox', label: 'Heaven int. pill' },
+      { key: 'heavenIntPillQuantity', type: 'num', label: 'Quantity (price 300/u)' },
       { key: 'headenCrystalCheckbox', type: 'checkbox', label: 'Heaven Crystal' },
-      { key: 'headenCrystalQuantity', type: 'num', label: 'Heaven Crystal Quantity' }
+      { key: 'headenCrystalQuantity', type: 'num', label: 'Quantity (price 1500/u)' }
     ]
   },
   {
-    name: 'Alliance',
+    name: 'Boutique Shop',
     fields: [
-      { key: 'buyLimitedAllianceShopCheckbox', type: 'checkbox', label: 'Buy Limited Alliance Shop' },
-      { key: 'buyLimitedRuinShopCheckbox', type: 'checkbox', label: 'Buy Limited Ruin Shop' },
-      { key: 'originEssenceCheckbox', type: 'checkbox', label: 'Origin Essence' },
-      { key: 'originEssenceQuantity', type: 'num', label: 'Origin Essence Quantity' },
-      { key: 'originSoulCheckbox', type: 'checkbox', label: 'Origin Soul' },
-      { key: 'originSoulQuantity', type: 'num', label: 'Origin Soul Quantity' },
-      { key: 'originPsicrystalCheckbox', type: 'checkbox', label: 'Origin Psicrystal' },
-      { key: 'originPsicrystalQuantity', type: 'num', label: 'Origin Psicrystal Quantity' },
-      { key: 'originGritCheckbox', type: 'checkbox', label: 'Origin Grit' },
-      { key: 'originGritQuantity', type: 'num', label: 'Origin Grit Quantity' }
+      { key: 'doBoutiqueCheckbox', type: 'checkbox', label: 'Buy springs in boutique' },
+      { key: 'useBoutiqueKeyCheckbox', type: 'checkbox', label: 'Use boutique keys' }
     ]
   },
   {
-    name: 'Boutique / XT / Hell',
+    name: 'XT Shop',
     fields: [
-      { key: 'doBoutiqueCheckbox', type: 'checkbox', label: 'Do Boutique' },
-      { key: 'useBoutiqueKeyCheckbox', type: 'checkbox', label: 'Use Boutique Key' },
-      { key: 'doXTshopCheckbox', type: 'checkbox', label: 'Do XT Shop' },
-      { key: 'hellBfCheckbox', type: 'checkbox', label: 'Hell BF' },
-      { key: 'hellBfQuantity', type: 'num', label: 'Hell BF Quantity' },
-      { key: 'hellHpCheckbox', type: 'checkbox', label: 'Hell HP' },
-      { key: 'hellHpQuantity', type: 'num', label: 'Hell HP Quantity' },
-      { key: 'hellHcCheckbox', type: 'checkbox', label: 'Hell HC' },
-      { key: 'hellHcQuantity', type: 'num', label: 'Hell HC Quantity' }
+      { key: 'doXTshopCheckbox', type: 'checkbox', label: 'Buy XT shop' }
     ]
   },
   {
-    name: 'Compete',
+    name: 'Hell Shop',
     fields: [
-      { key: 'buyCompeteP4H1Checkbox', type: 'checkbox', label: 'Buy Compete P4H1' },
-      { key: 'buyCompeteTPP1Checkbox', type: 'checkbox', label: 'Buy Compete TPP1' },
-      { key: 'buyCompeteP4H2Checkbox', type: 'checkbox', label: 'Buy Compete P4H2' },
-      { key: 'buyCompeteTPP2Checkbox', type: 'checkbox', label: 'Buy Compete TPP2' }
+      { key: 'hellBfCheckbox', type: 'checkbox', label: 'Beast Forage' },
+      { key: 'hellBfQuantity', type: 'num', label: 'Quantity' },
+      { key: 'hellHpCheckbox', type: 'checkbox', label: 'Heaven int. pill' },
+      { key: 'hellHpQuantity', type: 'num', label: 'Quantity' },
+      { key: 'hellHcCheckbox', type: 'checkbox', label: 'Heaven Crystal' },
+      { key: 'hellHcQuantity', type: 'num', label: 'Quantity' }
     ]
   },
   {
-    name: 'Conquest',
+    name: 'Ruin Shop',
     fields: [
-      { key: 'atkTroopsConquestValue', type: 'select', label: 'Attack Troops', options: ['100000', '1000000', '10000000', '100000000'] },
-      { key: 'defTroopsConquestValue', type: 'select', label: 'Defense Troops', options: ['100000', '1000000', '10000000', '100000000'] }
+      { key: 'buyLimitedRuinShopCheckbox', type: 'checkbox', label: 'Buy all max limited Ruin shop' }
+    ]
+  },
+  {
+    name: 'Alliance Shop',
+    fields: [
+      { key: 'buyLimitedAllianceShopCheckbox', type: 'checkbox', label: 'Buy all max limited alliance shop (except Bodhi only x2)' },
+      { key: 'originEssenceCheckbox', type: 'checkbox', label: 'Origin essence' },
+      { key: 'originEssenceQuantity', type: 'num', label: 'Quantity' },
+      { key: 'originSoulCheckbox', type: 'checkbox', label: 'Origin soul' },
+      { key: 'originSoulQuantity', type: 'num', label: 'Quantity' },
+      { key: 'originPsicrystalCheckbox', type: 'checkbox', label: 'Origin psicrystal' },
+      { key: 'originPsicrystalQuantity', type: 'num', label: 'Quantity' },
+      { key: 'originGritCheckbox', type: 'checkbox', label: 'Origin grit' },
+      { key: 'originGritQuantity', type: 'num', label: 'Quantity' }
+    ]
+  },
+  {
+    name: 'Compete Shop',
+    fields: [
+      { key: 'buyCompeteP4H1Checkbox', type: 'checkbox', label: 'Pill of Four Heavens (200x2)' },
+      { key: 'buyCompeteTPP1Checkbox', type: 'checkbox', label: 'Talent Pill Piece (160x2)' },
+      { key: 'buyCompeteP4H2Checkbox', type: 'checkbox', label: 'Pill of Four Heavens (250x3)' },
+      { key: 'buyCompeteTPP2Checkbox', type: 'checkbox', label: 'Talent Pill Piece (200x3)' }
+    ]
+  },
+  {
+    name: 'Conquest Troops',
+    fields: [
+      { key: 'atkTroopsConquestValue', type: 'select', label: 'Attack troops', options: ['100000', '1000000', '10000000', '100000000'] },
+      { key: 'defTroopsConquestValue', type: 'select', label: 'Def troops', options: ['100000', '1000000', '10000000', '100000000'] }
     ]
   }
 ];

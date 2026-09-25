@@ -14,13 +14,13 @@
       <div class="d-flex align-items-center gap-2">
         <span id="navDisplayName" class="text-light"></span>
         <span id="navRoleBadge" class="badge"></span>
-        <a href="/dashboard" class="btn btn-outline-light btn-sm">← Dashboard</a>
+        <a href="/dashboard" class="btn btn-outline-light btn-sm">← Back</a>
       </div>
     </div>
   </nav>
 
   <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
       <h3 class="mb-0" id="pageTitle">Account Config</h3>
       <div class="d-flex gap-2">
         <button class="btn btn-primary" onclick="saveAccount()">Save</button>
@@ -28,22 +28,22 @@
       </div>
     </div>
 
-    <!-- Part 1: basic info -->
+    <!-- Phần 1: thông tin tài khoản game -->
     <div class="card bg-dark border-secondary mb-4">
-      <div class="card-header fw-semibold">Account Information</div>
+      <div class="card-header fw-semibold">Thông tin tài khoản game</div>
       <div class="card-body">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label class="form-label" for="displayName">Display Name</label>
+            <label class="form-label" for="displayName">Display name</label>
             <input type="text" class="form-control" id="displayName">
           </div>
           <div class="col-md-6 mb-3">
-            <label class="form-label" for="username">Login (username)</label>
+            <label class="form-label" for="username">Game login / username</label>
             <input type="text" class="form-control" id="username">
           </div>
           <div class="col-md-6 mb-3">
-            <label class="form-label" for="password">Password <span class="text-body-secondary">(để trống = giữ)</span></label>
-            <input type="password" class="form-control" id="password" autocomplete="new-password" placeholder="unchanged">
+            <label class="form-label" for="password">Game password</label>
+            <input type="password" class="form-control" id="password" autocomplete="new-password" placeholder="Để trống nếu không đổi">
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label" for="server">Server</label>
@@ -52,18 +52,19 @@
         </div>
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="visibleToViewers">
-          <label class="form-check-label" for="visibleToViewers">Cho viewer thấy</label>
+          <label class="form-check-label" for="visibleToViewers">Cho viewer thấy tài khoản này</label>
         </div>
       </div>
     </div>
 
-    <!-- Part 2: bot settings -->
-    <h5 class="mb-3">Bot Configuration</h5>
+    <!-- Phần 2: cấu hình bot (2 cột, responsive) -->
+    <h5 class="mb-3">Cấu hình bot</h5>
     <div id="settingsContainer"></div>
 
     <div class="d-flex gap-2 mb-5 mt-3">
       <button class="btn btn-primary" onclick="saveAccount()">Save</button>
       <button class="btn btn-danger" onclick="deleteAndGo()">Delete</button>
+      <a href="/dashboard" class="btn btn-outline-secondary">← Back</a>
     </div>
   </div>
 
